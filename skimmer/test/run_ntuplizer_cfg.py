@@ -49,8 +49,20 @@ if options.test:
                 #options.inputFiles = 'root://cmsxrootd.fnal.gov////store/mc/RunIIAutumn18DRPremix/ZJetsToNuNu_HT-400To600_13TeV-madgraph/AODSIM/102X_upgrade2018_realistic_v15-v2/260000/FFF1E16F-A07D-ED45-9970-E077E64935DD.root'
                 # signal AOD test
                 options.inputFiles = 'root://cmseos.fnal.gov////store/group/lpcmetx/iDM/AOD/2018/signal/Mchi-60p0_dMchi-20p0_ctau-100/iDM_Mchi-60p0_dMchi-20p0_mZDinput-150p0_ctau-0_1or2jets_icckw1_drjj0_xptj80_xqcut20_1547134_AOD_ctau-100.root'
-    options.maxEvents = -1
-    options.outputFile = 'test.root'
+        options.maxEvents = -1
+        options.outputFile = 'test.root'
+    else :
+        sampledir = 'root://eosuser.cern.ch///eos/user/j/jreicher/iDM/Samples/'
+        ctau = 10
+        fnames = ['Higgsino-N2C1_generic_slc7_amd64_gcc820_CMSSW_9_3_16_tarball_12882880_AOD_ctau-10_year-2018.root'
+                 ,'Higgsino-N2C1_generic_slc7_amd64_gcc820_CMSSW_9_3_16_tarball_18100782_AOD_ctau-10_year-2018.root'
+                 ,'Higgsino-N2C1_generic_slc7_amd64_gcc820_CMSSW_9_3_16_tarball_21520602_AOD_ctau-10_year-2018.root'
+                 ,'Higgsino-N2C1_generic_slc7_amd64_gcc820_CMSSW_9_3_16_tarball_39300605_AOD_ctau-10_year-2018.root'
+                 ,'Higgsino-N2C1_generic_slc7_amd64_gcc820_CMSSW_9_3_16_tarball_7454350_AOD_ctau-10_year-2018.root'
+                 ]
+        options.inputFiles = [sampledir+fname for fname in fnames]
+        options.maxEvents = -1
+        options.outputFile = 'test_ctau%s.root' % ctau
 else:
     options.maxEvents = -1 
 
@@ -121,6 +133,7 @@ process.options = cms.untracked.PSet(
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(options.maxEvents)
     )
+print "inputFiles:",options.inputFiles
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(options.inputFiles),
     skipBadFiles = cms.untracked.bool(True)
