@@ -53,7 +53,7 @@ if options.test:
         options.outputFile = 'test.root'
     else :
         sampledir = 'root://eosuser.cern.ch///eos/user/j/jreicher/iDM/Samples/'
-        ctau = 10
+        ctau = 10 # mm
         fnames = ['Higgsino-N2C1_generic_slc7_amd64_gcc820_CMSSW_9_3_16_tarball_12882880_AOD_ctau-10_year-2018.root'
                  ,'Higgsino-N2C1_generic_slc7_amd64_gcc820_CMSSW_9_3_16_tarball_18100782_AOD_ctau-10_year-2018.root'
                  ,'Higgsino-N2C1_generic_slc7_amd64_gcc820_CMSSW_9_3_16_tarball_21520602_AOD_ctau-10_year-2018.root'
@@ -62,7 +62,7 @@ if options.test:
                  ]
         options.inputFiles = [sampledir+fname for fname in fnames]
         options.maxEvents = -1
-        options.outputFile = 'test_ctau%s.root' % ctau
+        options.outputFile = 'test_ctau%smm.root' % ctau
 else:
     options.maxEvents = -1 
 
