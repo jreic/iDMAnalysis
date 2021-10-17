@@ -66,6 +66,15 @@ The main analysis for iDM is done with a set of macros which are to be run in th
 
 1) `mMainAnalysis.C`: this macro runs on top of the flat ntuples and generates the desired histograms with the specified cuts, all via the json config files. In the latest version it uses ROOT's RDataFrame for columnar analysis as well as automatic multi-threading support (by invoking the `Selectors/RDataFrame/RDFAnalysis.C` code). With minor modifications it's also possible to select the older TSelector analyzer (in `Selectors/TSelectors/mainAnalysisSelector.C`), though that is much slower than the RDF version. The macro creates up to 3 THStacks for each desired histogram and for each cut: data, background, and signal THStacks (if their respective sample configs are provided). All THStacks are saved to the specified output ROOT file. The macro configs controlling the plots to be aggregrated include (e.g.) `RunCutflow.json`, and the set of plots to produce `Nominal2D.json` and `Nominal1D.json`. Example invocation:
 
+Run \
+-m configs/macros/[macro-config].json \
+-p configs/plots/[plot-config].json \
+-c configs/cuts/[cuts-config].json \
+-s configs/samples/[ntuple-version]/[bkg-config].json \
+-s configs/samples/[ntuple-version]/[data-config].json \
+-s configs/samples/[ntuple-version]/[signal-config].json \
+-o [out-file].root
+
     ```bash
     $ macroRun -m configs/macros/RunCutflow.json -p configs/plots/Nominal2D.json -c configs/cuts/CRnJets.json -s configs/samples/fourteenthrun/2018/backgrounds_full.json -s configs/samples/fourteenthrun/2018/data_full.json -o plots_CRnJets_fourteenthrun_2018.root
     $ macroRun -m configs/macros/RunCutflow.json -p configs/plots/Nominal2D.json -c configs/cuts/CRnJets.json -s configs/samples/fourteenthrun/2017/backgrounds_full.json -s configs/samples/fourteenthrun/2017/data_full.json -o plots_CRnJets_fourteenthrun_2017.root

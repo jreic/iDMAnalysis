@@ -71,6 +71,10 @@ namespace common {
         {"sig_6p0_10", GroupPlotInfo{"(5,7) GeV, 10 mm", kYellow-3, SOLID, SIGNAL}},
         {"sig_6p0_100", GroupPlotInfo{"(5,7) GeV, 100 mm", kYellow-3, SOLID, SIGNAL}},
         {"sig_6p0_1000", GroupPlotInfo{"(5,7) GeV, 1000 mm", kYellow-3, SOLID, SIGNAL}},
+	{"sig_EWKino_1mm", GroupPlotInfo{"(200,180) GeV, 1 mm", kBlack, SOLID, SIGNAL}},
+        {"sig_EWKino_10mm", GroupPlotInfo{"(200,180) GeV, 10 mm", kBlue, SOLID, SIGNAL}},
+        {"sig_EWKino_100mm", GroupPlotInfo{"(200,180) GeV, 100 mm", kOrange+1, SOLID, SIGNAL}},
+        {"sig_EWKino_1000mm", GroupPlotInfo{"(200,180) GeV, 1000 mm", kGreen+2, SOLID, SIGNAL}},
         {"data", GroupPlotInfo{"Data", kBlack, MARKER, DATA}}
         }; 
     }
